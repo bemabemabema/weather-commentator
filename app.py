@@ -142,10 +142,11 @@ for city_name, info in cities.items():
 
     # AIコメント（東京のみ）
     if info["comment"]:
-        with st.spinner("AIがコメントを考えています..."):
-            comment = get_ai_comment(
-                city_name, weather, current_temp, today_max, diff_max
-            )
-        st.info(f"💬 **AIコメント：** {comment}")
+        if st.button("💬 AIコメントを見る", key=city_name):
+            with st.spinner("AIがコメントを考えています..."):
+                comment = get_ai_comment(
+                    city_name, weather, current_temp, today_max, diff_max
+                )
+            st.info(f"💬 **AIコメント：** {comment}")
 
     st.divider()
